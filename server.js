@@ -18,7 +18,11 @@ app.use("*", cors());
 
 //Routes
 
-app.use("/api/clientes", require("./routes/clientes/clientes"));
+app.use("/api/clientes", require("./routes/clientes"));
+app.use("/api/servicios", require("./routes/servicios"));
+app.use("/api/pagos", require("./routes/pagos"));
+
+
 
 
 

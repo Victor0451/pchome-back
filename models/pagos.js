@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const db = require("../../config/db/db");
+const db = require("../config/db/db");
 
 module.exports = db.pchomeSequelize.define(
   "pagos",

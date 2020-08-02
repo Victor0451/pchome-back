@@ -1,26 +1,28 @@
 const Sequelize = require("sequelize");
-const db = require("../../config/db/db");
+const db = require("../config/db/db");
 
 module.exports = db.pchomeSequelize.define(
-  "servicios",
+  "clientes",
   {
-    idservicio: {
+    idcliente: {
       type: Sequelize.DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
-
-    idcliente: {
-      type: Sequelize.DataTypes.INTEGER,
-    },
-    detalle: {
+    nombre: {
       type: Sequelize.DataTypes.STRING,
     },
-    importe: {
+    apellido: {
+      type: Sequelize.DataTypes.STRING,
+    },
+    dni: {
       type: Sequelize.DataTypes.INTEGER,
     },
-    fecha: {
-      type: Sequelize.DataTypes.DATE,
+    domicilio: {
+      type: Sequelize.DataTypes.STRING,
+    },
+    telefono: {
+      type: Sequelize.DataTypes.INTEGER,
     },
   },
   {
@@ -28,6 +30,6 @@ module.exports = db.pchomeSequelize.define(
     freezeTableName: true,
   },
   {
-    tableName: "servicios",
+    tableName: "clientes",
   }
 );

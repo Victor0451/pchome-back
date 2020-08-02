@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const clientes = require("../../models/clientes/clientes");
+const clientes = require("../models/clientes");
 
 // LISTADOS CLIENTES
 
@@ -18,13 +18,14 @@ router.get("/listado", (req, res, next) => {
 // Clientes By ID
 
 router.get("/cliente/:id", (req, res, next) => {
-  historia
-    .findAll({
-      where: { CONTRATO: req.params.id },
-      order: [["FECHA", "DESC"]],
+  console.log(req.params.id)
+  clientes
+    .findOne({
+      where: { idcliente: req.params.id },
+
     })
-    .then((historia) => {
-      res.status(200).json(historia);
+    .then((cliente) => {
+      res.status(200).json(cliente);
     })
     .catch((err) => {
       res.status(400).json(err);
