@@ -22,6 +22,15 @@ module.exports = db.pchomeSequelize.define(
     fecha: {
       type: Sequelize.DataTypes.DATE,
     },
+    estado: {
+      type: Sequelize.DataTypes.INTEGER,
+    },
+    empresa: {
+      type: Sequelize.DataTypes.STRING,
+    },
+    deuda: {
+      type: Sequelize.DataTypes.INTEGER,
+    },
   },
   {
     timestamps: false,

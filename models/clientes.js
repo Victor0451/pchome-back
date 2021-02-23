@@ -24,6 +24,9 @@ module.exports = db.pchomeSequelize.define(
     telefono: {
       type: Sequelize.DataTypes.INTEGER,
     },
+    alias: {
+      type: Sequelize.DataTypes.STRING,
+    },
   },
   {
     timestamps: false,

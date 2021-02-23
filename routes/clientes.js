@@ -35,10 +35,52 @@ router.get("/cliente/:id", (req, res, next) => {
 // Nuevo Cliente
 
 router.post("/nuevo", (req, res) => {
-  const cliente = ({ apellido, nombre, dni, domicilio, telefono } = req.body);
+  const cliente = ({ apellido, nombre, dni, domicilio, telefono, alias } = req.body);
 
   clientes
     .create(cliente)
+    .then((cliente) => {
+      res.status(200).json(cliente);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
+
+// Editar Cliente
+
+router.put("/editar/:id", (req, res) => {
+  const { apellido, nombre, dni, domicilio, telefono, alias } = req.body;
+
+  clientes
+    .update(
+      {
+        apellido: apellido,
+        nombre: nombre,
+        dni: dni,
+        domicilio: domicilio,
+        telefono: telefono,
+        alias: alias
+      },
+      { where: { idcliente: req.params.id } }
+    )
+    .then((cliente) => {
+      res.status(200).json(cliente);
+    })
+    .catch((err) => {
+      res.status(400).json(err);
+    });
+});
+
+// Delete Clientes By ID
+
+router.delete("/eliminarcliente/:id", (req, res, next) => {
+  console.log(req.params.id)
+  clientes
+    .destroy({
+      where: { idcliente: req.params.id },
+
+    })
     .then((cliente) => {
       res.status(200).json(cliente);
     })
