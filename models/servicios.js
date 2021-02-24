@@ -31,6 +31,9 @@ module.exports = db.pchomeSequelize.define(
     deuda: {
       type: Sequelize.DataTypes.INTEGER,
     },
+    pago: {
+      type: Sequelize.DataTypes.INTEGER,
+    },
   },
   {
     timestamps: false,

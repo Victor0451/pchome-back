@@ -65,12 +65,13 @@ router.post("/nuevo", (req, res) => {
 });
 
 router.put("/putestado/:id", (req, res) => {
-    const { estado, deuda } = req.body;
+    const { estado, deuda, pago } = req.body;
     servicios
         .update(
             {
                 estado: estado,
-                deuda: deuda
+                deuda: deuda,
+                pago: pago
             },
             { where: { idservicio: req.params.id } }
         )

@@ -2,27 +2,14 @@ const express = require("express");
 const router = express.Router();
 const pagos = require("../models/pagos");
 
-// LISTADOS CLIENTES
 
-router.get("/listado", (req, res, next) => {
-    clientes
-        .findAll()
-        .then((clientes) => {
-            res.status(200).json(clientes);
-        })
-        .catch((err) => {
-            res.status(400).json(err);
-        });
-});
+// Historial de Pagos
 
-// Clientes By ID
+router.get("/historial/:id", (req, res, next) => {
 
-router.get("/servicio/:id", (req, res, next) => {
-    console.log(req.params.id)
-    servicios
-        .findOne({
-            where: { idservicio: req.params.id },
-
+    pagos
+        .findAll({
+            where: { idservicio: req.params.id }
         })
         .then((servicio) => {
             res.status(200).json(servicio);
@@ -32,7 +19,7 @@ router.get("/servicio/:id", (req, res, next) => {
         });
 });
 
-// Nuevo Cliente
+// Nuevo Pago
 
 router.post("/nuevo", (req, res) => {
     const pago = ({ idcliente, detalle, importe, fecha } = req.body);
