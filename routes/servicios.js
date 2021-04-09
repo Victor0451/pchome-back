@@ -83,4 +83,17 @@ router.put("/putestado/:id", (req, res) => {
         });
 });
 
+router.get("/listadosinpagar", (req, res, next) => {
+    servicios
+        .findAll({
+            where: { estado: 3 }
+        })
+        .then((clientes) => {
+            res.status(200).json(clientes);
+        })
+        .catch((err) => {
+            res.status(400).json(err);
+        });
+});
+
 module.exports = router;
